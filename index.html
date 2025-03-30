@@ -1,40 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>JS Game</title>
+    <title>Juego del Número Secreto</title>
 </head>
-
 <body>
-
     <div class="container">
         <div class="container__contenido">
             <div class="container__informaciones">
                 <div class="container__texto">
                     <h1></h1>
                     <p class="texto__parrafo"></p>
+                    <div class="stats">
+                        <p class="stats__item">Mejor puntuación: <span id="bestScore">-</span></p>
+                        <p class="stats__item">Intentos actuales: <span id="currentAttempts">0</span></p>
+                        <p class="stats__item">Tiempo: <span id="timer">00:00</span></p>
+                    </div>
                 </div>
-                <input type="number" id="valorUsuario" min="1" max="10" class="container__input">
+                <div class="difficulty-selector">
+                    <button class="difficulty-btn" data-max="10">Fácil</button>
+                    <button class="difficulty-btn" data-max="50">Medio</button>
+                    <button class="difficulty-btn" data-max="100">Difícil</button>
+                </div>
+                <div class="input-container">
+                    <input type="number" id="valorUsuario" min="1" max="100" class="container__input">
+                    <div class="hint-indicator"></div>
+                </div>
                 <div class="chute container__botones">
-                    <button onclick="verificarIntento();" class="container__boton">Intentar</button>
-                    <button onclick="reiniciarJuego();" class="container__boton" id="reiniciar" disabled>Nuevo juego</button>
+                    <button onclick="verificarIntento();" class="container__boton">
+                        <i class="fas fa-check"></i> Intentar
+                    </button>
+                    <button onclick="reiniciarJuego();" class="container__boton" id="reiniciar" disabled>
+                        <i class="fas fa-redo"></i> Nuevo juego
+                    </button>
                 </div>
             </div>
             <img src="./img/ia.png" alt="Una persona mirando a la izquierda" class="container__imagen-persona" />
         </div>
     </div>
-
-
-
+    <div id="confetti"></div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="app.js"></script>
-
 </body>
-
 </html>
