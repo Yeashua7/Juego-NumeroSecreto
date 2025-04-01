@@ -1,7 +1,7 @@
 let numeroSecreto = 0;
 let intentos = 0;
 let listaNumerosSorteados = [];
-let numeroMaximo = 10;
+let numeroMaximo = 100; // Nivel inicial: Fácil
 let tiempoInicio;
 let timerInterval;
 let mejorPuntuacion = localStorage.getItem('mejorPuntuacion') || Infinity;
@@ -116,7 +116,7 @@ function reiniciarJuego() {
 // Configurar selectores de dificultad
 document.querySelectorAll('.difficulty-btn').forEach(btn => {
     btn.addEventListener('click', function() {
-        numeroMaximo = parseInt(this.dataset.max);
+        numeroMaximo = parseInt(this.dataset.max); // Cambiar el rango según el nivel
         document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
         this.classList.add('active');
         reiniciarJuego();
